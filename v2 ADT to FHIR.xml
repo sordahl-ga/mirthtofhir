@@ -1,0 +1,711 @@
+<channel version="3.5.2">
+  <id>2ebe92d7-fc66-45ea-900a-e580ddf44f46</id>
+  <nextMetaDataId>2</nextMetaDataId>
+  <name>v2 ADT to FHIR</name>
+  <description></description>
+  <revision>62</revision>
+  <sourceConnector version="3.5.2">
+    <metaDataId>0</metaDataId>
+    <name>sourceConnector</name>
+    <properties class="com.mirth.connect.connectors.file.FileReceiverProperties" version="3.5.2">
+      <pluginProperties/>
+      <pollConnectorProperties version="3.5.2">
+        <pollingType>INTERVAL</pollingType>
+        <pollOnStart>false</pollOnStart>
+        <pollingFrequency>5000</pollingFrequency>
+        <pollingHour>0</pollingHour>
+        <pollingMinute>0</pollingMinute>
+        <cronJobs/>
+        <pollConnectorPropertiesAdvanced>
+          <weekly>true</weekly>
+          <inactiveDays>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </inactiveDays>
+          <dayOfMonth>1</dayOfMonth>
+          <allDay>true</allDay>
+          <startingHour>8</startingHour>
+          <startingMinute>0</startingMinute>
+          <endingHour>17</endingHour>
+          <endingMinute>0</endingMinute>
+        </pollConnectorPropertiesAdvanced>
+      </pollConnectorProperties>
+      <sourceConnectorProperties version="3.5.2">
+        <responseVariable>None</responseVariable>
+        <respondAfterProcessing>true</respondAfterProcessing>
+        <processBatch>false</processBatch>
+        <firstResponse>false</firstResponse>
+        <processingThreads>1</processingThreads>
+        <resourceIds class="linked-hash-map">
+          <entry>
+            <string>Default Resource</string>
+            <string>[Default Resource]</string>
+          </entry>
+        </resourceIds>
+        <queueBufferSize>1000</queueBufferSize>
+      </sourceConnectorProperties>
+      <scheme>FILE</scheme>
+      <host>/stor/hl7</host>
+      <fileFilter>*</fileFilter>
+      <regex>false</regex>
+      <directoryRecursion>false</directoryRecursion>
+      <ignoreDot>true</ignoreDot>
+      <anonymous>true</anonymous>
+      <username>anonymous</username>
+      <password>anonymous</password>
+      <timeout>10000</timeout>
+      <secure>true</secure>
+      <passive>true</passive>
+      <validateConnection>true</validateConnection>
+      <afterProcessingAction>DELETE</afterProcessingAction>
+      <moveToDirectory></moveToDirectory>
+      <moveToFileName></moveToFileName>
+      <errorReadingAction>NONE</errorReadingAction>
+      <errorResponseAction>AFTER_PROCESSING</errorResponseAction>
+      <errorMoveToDirectory></errorMoveToDirectory>
+      <errorMoveToFileName></errorMoveToFileName>
+      <checkFileAge>true</checkFileAge>
+      <fileAge>1000</fileAge>
+      <fileSizeMinimum>0</fileSizeMinimum>
+      <fileSizeMaximum></fileSizeMaximum>
+      <ignoreFileSizeMaximum>true</ignoreFileSizeMaximum>
+      <sortBy>date</sortBy>
+      <binary>false</binary>
+      <charsetEncoding>DEFAULT_ENCODING</charsetEncoding>
+    </properties>
+    <transformer version="3.5.2">
+      <elements/>
+      <inboundDataType>HL7V2</inboundDataType>
+      <outboundDataType>HL7V2</outboundDataType>
+      <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.5.2">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.5.2">
+          <handleRepetitions>true</handleRepetitions>
+          <handleSubcomponents>true</handleSubcomponents>
+          <useStrictParser>false</useStrictParser>
+          <useStrictValidation>false</useStrictValidation>
+          <stripNamespaces>true</stripNamespaces>
+          <segmentDelimiter>\r</segmentDelimiter>
+          <convertLineBreaks>true</convertLineBreaks>
+        </serializationProperties>
+        <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.5.2">
+          <useStrictParser>false</useStrictParser>
+          <useStrictValidation>false</useStrictValidation>
+          <segmentDelimiter>\r</segmentDelimiter>
+        </deserializationProperties>
+        <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.5.2">
+          <splitType>MSH_Segment</splitType>
+          <batchScript></batchScript>
+        </batchProperties>
+        <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.5.2">
+          <segmentDelimiter>\r</segmentDelimiter>
+          <successfulACKCode>AA</successfulACKCode>
+          <successfulACKMessage></successfulACKMessage>
+          <errorACKCode>AE</errorACKCode>
+          <errorACKMessage>An Error Occurred Processing Message.</errorACKMessage>
+          <rejectedACKCode>AR</rejectedACKCode>
+          <rejectedACKMessage>Message Rejected.</rejectedACKMessage>
+          <msh15ACKAccept>false</msh15ACKAccept>
+          <dateFormat>yyyyMMddHHmmss.SSS</dateFormat>
+        </responseGenerationProperties>
+        <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.5.2">
+          <successfulACKCode>AA,CA</successfulACKCode>
+          <errorACKCode>AE,CE</errorACKCode>
+          <rejectedACKCode>AR,CR</rejectedACKCode>
+          <validateMessageControlId>true</validateMessageControlId>
+          <originalMessageControlId>Destination_Encoded</originalMessageControlId>
+          <originalIdMapVariable></originalIdMapVariable>
+        </responseValidationProperties>
+      </inboundProperties>
+      <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.5.2">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.5.2">
+          <handleRepetitions>true</handleRepetitions>
+          <handleSubcomponents>true</handleSubcomponents>
+          <useStrictParser>false</useStrictParser>
+          <useStrictValidation>false</useStrictValidation>
+          <stripNamespaces>true</stripNamespaces>
+          <segmentDelimiter>\r</segmentDelimiter>
+          <convertLineBreaks>true</convertLineBreaks>
+        </serializationProperties>
+        <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.5.2">
+          <useStrictParser>false</useStrictParser>
+          <useStrictValidation>false</useStrictValidation>
+          <segmentDelimiter>\r</segmentDelimiter>
+        </deserializationProperties>
+        <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.5.2">
+          <splitType>MSH_Segment</splitType>
+          <batchScript></batchScript>
+        </batchProperties>
+        <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.5.2">
+          <segmentDelimiter>\r</segmentDelimiter>
+          <successfulACKCode>AA</successfulACKCode>
+          <successfulACKMessage></successfulACKMessage>
+          <errorACKCode>AE</errorACKCode>
+          <errorACKMessage>An Error Occurred Processing Message.</errorACKMessage>
+          <rejectedACKCode>AR</rejectedACKCode>
+          <rejectedACKMessage>Message Rejected.</rejectedACKMessage>
+          <msh15ACKAccept>false</msh15ACKAccept>
+          <dateFormat>yyyyMMddHHmmss.SSS</dateFormat>
+        </responseGenerationProperties>
+        <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.5.2">
+          <successfulACKCode>AA,CA</successfulACKCode>
+          <errorACKCode>AE,CE</errorACKCode>
+          <rejectedACKCode>AR,CR</rejectedACKCode>
+          <validateMessageControlId>true</validateMessageControlId>
+          <originalMessageControlId>Destination_Encoded</originalMessageControlId>
+          <originalIdMapVariable></originalIdMapVariable>
+        </responseValidationProperties>
+      </outboundProperties>
+    </transformer>
+    <filter version="3.5.2">
+      <elements/>
+    </filter>
+    <transportName>File Reader</transportName>
+    <mode>SOURCE</mode>
+    <enabled>true</enabled>
+    <waitForPrevious>true</waitForPrevious>
+  </sourceConnector>
+  <destinationConnectors>
+    <connector version="3.5.2">
+      <metaDataId>1</metaDataId>
+      <name>MSHLSFHIR Server</name>
+      <properties class="com.mirth.connect.connectors.http.HttpDispatcherProperties" version="3.5.2">
+        <pluginProperties/>
+        <destinationConnectorProperties version="3.5.2">
+          <queueEnabled>false</queueEnabled>
+          <sendFirst>false</sendFirst>
+          <retryIntervalMillis>10000</retryIntervalMillis>
+          <regenerateTemplate>false</regenerateTemplate>
+          <retryCount>0</retryCount>
+          <rotate>false</rotate>
+          <includeFilterTransformer>false</includeFilterTransformer>
+          <threadCount>1</threadCount>
+          <threadAssignmentVariable></threadAssignmentVariable>
+          <validateResponse>false</validateResponse>
+          <resourceIds class="linked-hash-map">
+            <entry>
+              <string>Default Resource</string>
+              <string>[Default Resource]</string>
+            </entry>
+          </resourceIds>
+          <queueBufferSize>1000</queueBufferSize>
+          <reattachAttachments>true</reattachAttachments>
+        </destinationConnectorProperties>
+        <host>https://mshlsfhir3apiapp.azurewebsites.net/Bundle</host>
+        <useProxyServer>false</useProxyServer>
+        <proxyAddress></proxyAddress>
+        <proxyPort></proxyPort>
+        <method>post</method>
+        <headers class="linked-hash-map">
+          <entry>
+            <string>Accept</string>
+            <list>
+              <string>application/json</string>
+            </list>
+          </entry>
+        </headers>
+        <parameters class="linked-hash-map"/>
+        <responseXmlBody>false</responseXmlBody>
+        <responseParseMultipart>true</responseParseMultipart>
+        <responseIncludeMetadata>false</responseIncludeMetadata>
+        <responseBinaryMimeTypes>application/.*(?&lt;!json|xml)$|image/.*|video/.*|audio/.*</responseBinaryMimeTypes>
+        <responseBinaryMimeTypesRegex>true</responseBinaryMimeTypesRegex>
+        <multipart>false</multipart>
+        <useAuthentication>false</useAuthentication>
+        <authenticationType>Basic</authenticationType>
+        <usePreemptiveAuthentication>true</usePreemptiveAuthentication>
+        <username></username>
+        <password></password>
+        <content>${message.encodedData}</content>
+        <contentType>application/json</contentType>
+        <dataTypeBinary>false</dataTypeBinary>
+        <charset>UTF-8</charset>
+        <socketTimeout>30000</socketTimeout>
+      </properties>
+      <transformer version="3.5.2">
+        <elements>
+          <com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+            <name>HL7v2.x ADT to FHIR</name>
+            <sequenceNumber>0</sequenceNumber>
+            <script>//RHM
+var RHM=&quot;932&quot;;
+var instance = msg[&apos;MSH&apos;][&apos;MSH.3&apos;][&apos;MSH.3.1&apos;].toString();
+var source = msg[&apos;MSH&apos;][&apos;MSH.4&apos;][&apos;MSH.4.1&apos;].toString();
+
+if (instance==&quot;HQ&quot; &amp;&amp; source==&quot;C&quot;) RHM=&quot;204&quot;;
+else if (instance==&quot;HQ&quot; &amp;&amp; source==&quot;U&quot;) RHM=&quot;205&quot;;
+else if (instance==&quot;Cerner&quot; &amp;&amp; source==&quot;CO&quot;) RHM=&quot;204&quot;;
+else if (instance==&quot;Cerner&quot; &amp;&amp; source==&quot;AA&quot;) RHM=&quot;205&quot;;
+
+//Reference Resources (Practition, Orginization, etc...)
+//GP
+var genPractitioner = null;
+if (msg[&apos;PD1&apos;][&apos;PD1.4&apos;].toString().length &gt; 0) {
+	genPractitioner = {};
+	genPractitioner.resourceType=&quot;Practitioner&quot;;
+	genPractitioner.active=true;
+	var gphumanName = {
+		family: [msg[&apos;PD1&apos;][&apos;PD1.4&apos;][&apos;PD1.4.2&apos;].toString()],
+		given: [msg[&apos;PD1&apos;][&apos;PD1.4&apos;][&apos;PD1.4.3&apos;].toString(),msg[&apos;PD1&apos;][&apos;PD1.4&apos;][&apos;PD1.4.4&apos;].toString()],
+		text: msg[&apos;PD1&apos;][&apos;PD1.4&apos;][&apos;PD1.4.3&apos;].toString() + &apos; &apos; + msg[&apos;PD1&apos;][&apos;PD1.4&apos;][&apos;PD1.4.2&apos;].toString()
+	};
+	genPractitioner.name = [gphumanName];
+	genPractitioner.id = RHM + &quot;-&quot; + msg[&apos;PD1&apos;][&apos;PD1.4&apos;][&apos;PD1.4.1&apos;].toString();
+}
+//Attending Doc
+var attPractitioner = null;
+if (msg[&apos;PV1&apos;][&apos;PV1.7&apos;].toString().length &gt; 0) {
+	attPractitioner = {};
+	attPractitioner.resourceType=&quot;Practitioner&quot;;
+	attPractitioner.active=true;
+	var atthumanName = {
+		family: [msg[&apos;PV1&apos;][&apos;PV1.7&apos;][&apos;PV1.7.2&apos;].toString()],
+		given: [msg[&apos;PV1&apos;][&apos;PV1.7&apos;][&apos;PV1.7.3&apos;].toString(),msg[&apos;PV1&apos;][&apos;PV1.7&apos;][&apos;PV1.7.4&apos;].toString()],
+		text: msg[&apos;PV1&apos;][&apos;PV1.7&apos;][&apos;PV1.7.3&apos;].toString() + &apos; &apos; + msg[&apos;PV1&apos;][&apos;PV1.7&apos;][&apos;PV1.7.2&apos;].toString()
+	};
+	attPractitioner.name = [atthumanName];
+	attPractitioner.id = RHM + &quot;-&quot; + msg[&apos;PV1&apos;][&apos;PV1.7&apos;][&apos;PV1.7.1&apos;].toString();
+}
+//Admitting Doc
+var admPractitioner = null;
+if (msg[&apos;PV1&apos;][&apos;PV1.17&apos;].toString().length &gt; 0) {
+	admPractitioner = {};
+	admPractitioner.resourceType=&quot;Practitioner&quot;;
+	admPractitioner.active=true;
+	var admhumanName = {
+		family: [msg[&apos;PV1&apos;][&apos;PV1.17&apos;][&apos;PV1.17.2&apos;].toString()],
+		given: [msg[&apos;PV1&apos;][&apos;PV1.17&apos;][&apos;PV1.17.3&apos;].toString(),msg[&apos;PV1&apos;][&apos;PV1.17&apos;][&apos;PV1.17.4&apos;].toString()],
+		text: msg[&apos;PV1&apos;][&apos;PV1.17&apos;][&apos;PV1.17.3&apos;].toString() + &apos; &apos; + msg[&apos;PV1&apos;][&apos;PV1.17&apos;][&apos;PV1.17.2&apos;].toString()
+	};
+	admPractitioner.name = [admhumanName];
+	admPractitioner.id = RHM + &quot;-&quot; + msg[&apos;PV1&apos;][&apos;PV1.17&apos;][&apos;PV1.17.1&apos;].toString();
+}
+// Reffering Doc
+var refPractitioner = null;
+if (msg[&apos;PV1&apos;][&apos;PV1.8&apos;].toString().length &gt; 0) {
+	refPractitioner = {};
+	refPractitioner.resourceType=&quot;Practitioner&quot;;
+	refPractitioner.active=true;
+	var refhumanName = {
+		family: [msg[&apos;PV1&apos;][&apos;PV1.8&apos;][&apos;PV1.8.2&apos;].toString()],
+		given: [msg[&apos;PV1&apos;][&apos;PV1.8&apos;][&apos;PV1.8.3&apos;].toString(),msg[&apos;PV1&apos;][&apos;PV1.8&apos;][&apos;PV1.8.4&apos;].toString()],
+		text: msg[&apos;PV1&apos;][&apos;PV1.8&apos;][&apos;PV1.8.3&apos;].toString() + &apos; &apos; + msg[&apos;PV1&apos;][&apos;PV1.8&apos;][&apos;PV1.8.2&apos;].toString()
+	};
+	refPractitioner.name = [refhumanName];
+	refPractitioner.id = RHM + &quot;-&quot; + msg[&apos;PV1&apos;][&apos;PV1.8&apos;][&apos;PV1.8.1&apos;].toString();
+}
+
+//Patient Resource
+var Patient = {};
+var pinternalenc = null;
+Patient.resourceType = &quot;Patient&quot;;
+Patient.active=true;
+//Gender
+Patient.gender = msg[&apos;PID&apos;][&apos;PID.8&apos;][&apos;PID.8.1&apos;].toString();
+if (Patient.gender===&quot;F&quot;) {
+	Patient.gender = &quot;female&quot;;
+} else if (Patient.gender===&quot;M&quot;) {
+	Patient.gender = &quot;male&quot;;
+} else if (Patient.gender===&quot;O&quot;) {
+	Patient.gender = &quot;other&quot;;
+} else {
+	Patient.gender = &quot;unknown&quot;;
+}
+//Birthdate
+var date = msg[&apos;PID&apos;][&apos;PID.7&apos;][&apos;PID.7.1&apos;].toString();
+Patient.birthDate = date.substr(0,4) + &quot;-&quot; + date.substr(4,2) + &quot;-&quot; + date.substr(6,2);
+//Handle Repeting Field PID-3 for IDs
+Patient.identifier = [];
+for each(var id in msg[&apos;PID&apos;][&apos;PID.3&apos;]) {
+	var pi = {
+	     &quot;use&quot;: &quot;usual&quot;,
+	     &quot;type&quot;: {
+	       &quot;coding&quot;: [
+	         {
+	           &quot;system&quot;: &quot;http://hl7.org/fhir/v2/0203&quot;,
+	           &quot;code&quot;: id[&apos;PID.3.5&apos;].toString()
+	         }
+	       ]
+	     },
+	     &quot;value&quot;: id[&apos;PID.3.1&apos;].toString(),
+	     &quot;assigner&quot;:  id[&apos;PID.3.4&apos;].toString()
+	   }
+	   Patient.identifier.push(pi);
+	   if (id[&apos;PID.3.5&apos;].toString()===&quot;PI&quot;) pinternalenc = pi;
+}
+//SS#
+var ssi = {
+	     &quot;use&quot;: &quot;usual&quot;,
+	     &quot;type&quot;: {
+	       &quot;coding&quot;: [
+	         {
+	           &quot;system&quot;: &quot;http://hl7.org/fhir/v2/0203&quot;,
+	           &quot;code&quot;: &quot;SS&quot;
+	         }
+	       ]
+	     },
+	     &quot;value&quot;: msg[&apos;PID&apos;][&apos;PID.19&apos;][&apos;PID.19.1&apos;].toString(),
+	     &quot;system&quot;: &quot;http://hl7.org/fhir/sid/us-ssn&quot;
+	   }
+	   Patient.identifier.push(ssi);
+//EXT ID
+var extid = {
+	     &quot;use&quot;: &quot;usual&quot;,
+	     &quot;type&quot;: {
+	       &quot;coding&quot;: [
+	         {
+	           &quot;system&quot;: &quot;http://hl7.org/fhir/v2/0203&quot;,
+	           &quot;code&quot;: &quot;EMPI&quot;
+	         }
+	       ]
+	     },
+	     &quot;value&quot;: msg[&apos;PID&apos;][&apos;PID.2&apos;][&apos;PID.2.1&apos;].toString(),
+	     &quot;assigner&quot;:  msg[&apos;PID&apos;][&apos;PID.2&apos;][&apos;PID.2.4&apos;].toString()
+	   }
+	   Patient.identifier.push(extid);	   
+//Name
+var humanName = {
+	family: [msg[&apos;PID&apos;][&apos;PID.5&apos;][&apos;PID.5.1&apos;].toString()],
+	given: [msg[&apos;PID&apos;][&apos;PID.5&apos;][&apos;PID.5.2&apos;].toString(),msg[&apos;PID&apos;][&apos;PID.5&apos;][&apos;PID.5.3&apos;].toString()],
+	text: msg[&apos;PID&apos;][&apos;PID.5&apos;][&apos;PID.5.2&apos;].toString() + &apos; &apos; + msg[&apos;PID&apos;][&apos;PID.5&apos;][&apos;PID.5.1&apos;].toString()
+};
+Patient.name = [humanName];
+//Address (Assume first sub-segment is home)
+var homeaddr = {};
+homeaddr.use = &quot;home&quot;;
+homeaddr.line = [];
+homeaddr.line.push(msg[&apos;PID&apos;][&apos;PID.11&apos;][&apos;PID.11.1&apos;].toString());
+homeaddr.line.push(msg[&apos;PID&apos;][&apos;PID.11&apos;][&apos;PID.11.2&apos;].toString());
+homeaddr.city = msg[&apos;PID&apos;][&apos;PID.11&apos;][&apos;PID.11.3&apos;].toString();
+homeaddr.state = msg[&apos;PID&apos;][&apos;PID.11&apos;][&apos;PID.11.4&apos;].toString();
+homeaddr.postalCode = msg[&apos;PID&apos;][&apos;PID.11&apos;][&apos;PID.11.5&apos;].toString();
+homeaddr.country = msg[&apos;PID&apos;][&apos;PID.11&apos;][&apos;PID.11.6&apos;].toString();
+Patient.address = [homeaddr];
+//Telecom (assume first sub-segment is home phone)
+var phone = {};
+phone.system=&quot;phone&quot;;
+phone.value=msg[&apos;PID&apos;][&apos;PID.13&apos;][&apos;PID.13.1&apos;].toString();
+phone.use=&quot;home&quot;;
+//Email
+var email = {};
+email.system=&quot;email&quot;;
+email.value=msg[&apos;PID&apos;][&apos;PID.13&apos;][&apos;PID.13.4&apos;].toString();
+Patient.telecom = [phone,email];
+//Marital Status (You would normally do a code look up here)
+var marital = {};
+var maritalCoding = {};
+maritalCoding.system=&quot;http://hl7.org/fhir/ValueSet/marital-status&quot;;
+maritalCoding.code = msg[&apos;PID&apos;][&apos;PID.16&apos;][&apos;PID.16.1&apos;].toString()
+if (maritalCoding.code===&quot;S&quot;) {
+	maritalCoding.display=&quot;Never Married&quot;;
+	marital.text=&quot;Single&quot;;
+} else if (maritalCoding.code===&quot;M&quot;) {
+	maritalCoding.display=&quot;Married&quot;;
+	marital.text=&quot;Married&quot;;
+}
+marital.coding = [maritalCoding];
+Patient.maritalStatus= marital;
+//RACE
+//TODO: MAP TO US-CORE-RACE Source System Custom Codes
+Patient.extension = [];
+var race = {
+            &quot;url&quot;: &quot;http://hl7.org/fhir/StructureDefinition/us-core-race&quot;,
+            &quot;valueCodeableConcept&quot;: {
+                &quot;text&quot;: &quot;&quot;,
+                &quot;coding&quot;: [
+                    {
+                        &quot;system&quot;: &quot;&quot;,
+                        &quot;code&quot;: msg[&apos;PID&apos;][&apos;PID.10&apos;][&apos;PID.10.1&apos;].toString(),
+                        &quot;display&quot;: &quot;&quot;
+                    }
+                ]
+            }
+        }
+Patient.extension.push(race);
+//GP Reference
+if (genPractitioner) Patient.generalPractitioner = &quot;Practitioner/&quot; + genPractitioner.id;
+Patient.id = extid.value;
+//Location
+var location = null;
+if (msg[&apos;PV1&apos;][&apos;PV1.3&apos;].toString().length &gt; 0) {
+	var lpv1 = msg[&apos;PV1&apos;][&apos;PV1.3&apos;];
+	var unit = lpv1[&apos;PV1.3.1&apos;].toString();
+	var room = lpv1[&apos;PV1.3.2&apos;].toString();
+	var bed = lpv1[&apos;PV1.3.3&apos;].toString();
+	var fac = lpv1[&apos;PV1.3.4&apos;].toString();
+	var ls = unit;
+	if (room != null &amp;&amp; room.length &gt; 0) ls = ls + &quot;-&quot; + room;
+	if (bed !=null &amp;&amp; bed.length &gt; 0) ls =ls + &quot;-&quot; + bed;
+	if (fac != null &amp;&amp; fac.length &gt; 0) ls =ls + &quot;-&quot; + fac;
+	location = {};
+	location.resourceType=&quot;Location&quot;;
+	location.id = RHM + &quot;-&quot; + ls;
+	location.identifier=[{&quot;value&quot;:RHM + &quot;-&quot; + ls}];
+}
+//Encounter
+var encounter = {&quot;class&quot;:{&quot;code&quot;: msg[&apos;PV1&apos;][&apos;PV1.20&apos;][&apos;PV1.20.1&apos;].toString()}};
+encounter.resourceType=&quot;Encounter&quot;;
+encounter.id = RHM + &quot;-&quot; + pinternalenc.value;
+encounter.subject={&quot;reference&quot;:&quot;Patient/&quot; + Patient.id};
+if (location != null)
+	encounter.location = {&quot;location&quot;:&quot;Location/&quot; + location.id};
+//Admission and Discharge Date/Time
+encounter.period = {};
+var admdate = msg[&apos;PV2&apos;][&apos;PV2.8&apos;][&apos;PV2.8.1&apos;].toString();
+encounter.period.start = admdate.substr(0,4) + &quot;-&quot; + admdate.substr(4,2) + &quot;-&quot; + admdate.substr(6,2) + &quot;T&quot; + admdate.substring(8,10) +&quot;:&quot;+admdate.substring(10,12)+&quot;:00.000Z&quot;;
+var disch = msg[&apos;PV1&apos;][&apos;PV1.46&apos;][&apos;PV1.46.1&apos;].toString();
+if (disch !=null &amp;&amp; disch.length &gt; 11) {
+	encounter.period.end = disch.substr(0,4) + &quot;-&quot; + disch.substr(4,2) + &quot;-&quot; + disch.substr(6,2) + &quot;T&quot; + disch.substring(8,10) +&quot;:&quot;+disch.substring(10,12)+&quot;:00.000Z&quot;;	
+}
+//Encounter Types Patient Type and Adm Type
+encounter.type = [];
+var enctext = {};
+enctext.text = msg[&apos;PV1&apos;][&apos;PV1.18&apos;][&apos;PV1.18.1&apos;].toString();
+encounter.type.push(enctext);
+var enctext1 = {};
+enctext1.text = msg[&apos;PV1&apos;][&apos;PV1.4&apos;][&apos;PV1.4.1&apos;].toString();
+encounter.type.push(enctext1);
+encounter.hospitalization = {};
+encounter.hospitalization.dischargeDisposition = {};
+encounter.hospitalization.dischargeDisposition.text=msg[&apos;PV1&apos;][&apos;PV1.36&apos;][&apos;PV1.36.1&apos;].toString();
+encounter.participant = [];
+if (admPractitioner) {
+	var part =  {
+	      &quot;type&quot;: [
+	        {
+	          &quot;coding&quot;: [
+	            {
+	              &quot;system&quot;: &quot;http://hl7.org/fhir/v3/ParticipationType&quot;,
+	              &quot;code&quot;: &quot;ADM&quot;,
+	              &quot;display&quot;: &quot;admitter&quot;
+	            }
+	          ],
+	          &quot;text&quot;: &quot;Admitting Physician&quot;
+	        }
+	      ],
+	      &quot;period&quot;: {
+	        &quot;start&quot;: encounter.period.start
+	      },
+	      &quot;individual&quot;: {
+	        &quot;reference&quot;: &quot;Practitioner/&quot; + admPractitioner.id,
+	        &quot;display&quot;: admhumanName.text
+	      }
+	};
+	encounter.participant.push(part);
+}
+if (attPractitioner) {
+	var part =  {
+	      &quot;type&quot;: [
+	        {
+	          &quot;coding&quot;: [
+	            {
+	              &quot;system&quot;: &quot;http://hl7.org/fhir/v3/ParticipationType&quot;,
+	              &quot;code&quot;: &quot;ATND&quot;,
+	              &quot;display&quot;: &quot;attender&quot;
+	            }
+	          ],
+	          &quot;text&quot;: &quot;Attending Physician&quot;
+	        }
+	      ],
+	      &quot;period&quot;: {
+	        &quot;start&quot;: encounter.period.start
+	      },
+	      &quot;individual&quot;: {
+	        &quot;reference&quot;: &quot;Practitioner/&quot; + attPractitioner.id,
+	        &quot;display&quot;: atthumanName.text
+	      }
+	};
+	encounter.participant.push(part);
+}
+if (refPractitioner) {
+	var part =  {
+	      &quot;type&quot;: [
+	        {
+	          &quot;coding&quot;: [
+	            {
+	              &quot;system&quot;: &quot;http://hl7.org/fhir/v3/ParticipationType&quot;,
+	              &quot;code&quot;: &quot;REF&quot;,
+	              &quot;display&quot;: &quot;referrer&quot;
+	            }
+	          ],
+	          &quot;text&quot;: &quot;Reffering Physician&quot;
+	        }
+	      ],
+	      &quot;period&quot;: {
+	        &quot;start&quot;: encounter.period.start
+	      },
+	      &quot;individual&quot;: {
+	        &quot;reference&quot;: &quot;Practitioner/&quot; + refPractitioner.id,
+	        &quot;display&quot;: refhumanName.text
+	      }
+	};
+	encounter.participant.push(part);
+}
+      
+var messageHeader = {};
+
+messageHeader.resourceType = &quot;MessageHeader&quot;;
+messageHeader.source = {
+	name: msg[&apos;MSH&apos;][&apos;MSH.3&apos;][&apos;MSH.3.1&apos;].toString()
+}
+messageHeader.destination = [{
+	name: &apos;Azure FHIR&apos;
+}]
+var timestamp = msg[&apos;MSH&apos;][&apos;MSH.7&apos;][&apos;MSH.7.1&apos;].toString();
+messageHeader.timestamp = timestamp.substr(0,4) + &quot;-&quot; + timestamp.substr(4,2) + &quot;-&quot; + timestamp.substr(6,2) + &quot;T&quot; + timestamp.substring(8,10) +&quot;:&quot;+timestamp.substring(10,12) + &quot;:&quot; + timestamp.substring(12,14)+&quot;.000Z&quot;;
+messageHeader.event = {&quot;code&quot; : msg[&apos;MSH&apos;][&apos;MSH.9&apos;][&apos;MSH.9.2&apos;].toString()};
+var bundle = {};
+bundle.resourceType = &quot;Bundle&quot;;
+bundle.type = &quot;message&quot;;
+bundle.entry = [];
+bundle.entry.push({&quot;resource&quot; : messageHeader});
+if (genPractitioner) bundle.entry.push({&quot;resource&quot; : genPractitioner});
+if (admPractitioner) bundle.entry.push({&quot;resource&quot; : admPractitioner});
+if (attPractitioner) bundle.entry.push({&quot;resource&quot; : attPractitioner});
+if (refPractitioner) bundle.entry.push({&quot;resource&quot; : refPractitioner});
+if (location) bundle.entry.push({&quot;resource&quot; : location});
+bundle.entry.push({&quot;resource&quot; : Patient});
+bundle.entry.push({&quot;resource&quot; : encounter});
+bundle.total = bundle.entry.length;
+
+msg = JSON.stringify(bundle);</script>
+          </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        </elements>
+        <inboundTemplate encoding="base64"></inboundTemplate>
+        <outboundTemplate encoding="base64"></outboundTemplate>
+        <inboundDataType>HL7V2</inboundDataType>
+        <outboundDataType>JSON</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.5.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.5.2">
+            <handleRepetitions>true</handleRepetitions>
+            <handleSubcomponents>true</handleSubcomponents>
+            <useStrictParser>false</useStrictParser>
+            <useStrictValidation>false</useStrictValidation>
+            <stripNamespaces>true</stripNamespaces>
+            <segmentDelimiter>\r</segmentDelimiter>
+            <convertLineBreaks>true</convertLineBreaks>
+          </serializationProperties>
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.5.2">
+            <useStrictParser>false</useStrictParser>
+            <useStrictValidation>false</useStrictValidation>
+            <segmentDelimiter>\r</segmentDelimiter>
+          </deserializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.5.2">
+            <splitType>MSH_Segment</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.5.2">
+            <segmentDelimiter>\r</segmentDelimiter>
+            <successfulACKCode>AA</successfulACKCode>
+            <successfulACKMessage></successfulACKMessage>
+            <errorACKCode>AE</errorACKCode>
+            <errorACKMessage>An Error Occurred Processing Message.</errorACKMessage>
+            <rejectedACKCode>AR</rejectedACKCode>
+            <rejectedACKMessage>Message Rejected.</rejectedACKMessage>
+            <msh15ACKAccept>false</msh15ACKAccept>
+            <dateFormat>yyyyMMddHHmmss.SSS</dateFormat>
+          </responseGenerationProperties>
+          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.5.2">
+            <successfulACKCode>AA,CA</successfulACKCode>
+            <errorACKCode>AE,CE</errorACKCode>
+            <rejectedACKCode>AR,CR</rejectedACKCode>
+            <validateMessageControlId>true</validateMessageControlId>
+            <originalMessageControlId>Destination_Encoded</originalMessageControlId>
+            <originalIdMapVariable></originalIdMapVariable>
+          </responseValidationProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.json.JSONDataTypeProperties" version="3.5.2">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.json.JSONBatchProperties" version="3.5.2">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </transformer>
+      <responseTransformer version="3.5.2">
+        <elements/>
+        <inboundDataType>JSON</inboundDataType>
+        <outboundDataType>JSON</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.json.JSONDataTypeProperties" version="3.5.2">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.json.JSONBatchProperties" version="3.5.2">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.json.JSONDataTypeProperties" version="3.5.2">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.json.JSONBatchProperties" version="3.5.2">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </responseTransformer>
+      <filter version="3.5.2">
+        <elements/>
+      </filter>
+      <transportName>HTTP Sender</transportName>
+      <mode>DESTINATION</mode>
+      <enabled>true</enabled>
+      <waitForPrevious>true</waitForPrevious>
+    </connector>
+  </destinationConnectors>
+  <preprocessingScript>// Modify the message variable below to pre process data
+return message;</preprocessingScript>
+  <postprocessingScript>// This script executes once after a message has been processed
+// Responses returned from here will be stored as &quot;Postprocessor&quot; in the response map
+return;</postprocessingScript>
+  <deployScript>// This script executes once when the channel is deployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</deployScript>
+  <undeployScript>// This script executes once when the channel is undeployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</undeployScript>
+  <properties version="3.5.2">
+    <clearGlobalChannelMap>true</clearGlobalChannelMap>
+    <messageStorageMode>DEVELOPMENT</messageStorageMode>
+    <encryptData>false</encryptData>
+    <removeContentOnCompletion>false</removeContentOnCompletion>
+    <removeOnlyFilteredOnCompletion>false</removeOnlyFilteredOnCompletion>
+    <removeAttachmentsOnCompletion>false</removeAttachmentsOnCompletion>
+    <initialState>STARTED</initialState>
+    <storeAttachments>false</storeAttachments>
+    <metaDataColumns>
+      <metaDataColumn>
+        <name>SOURCE</name>
+        <type>STRING</type>
+        <mappingName>mirth_source</mappingName>
+      </metaDataColumn>
+      <metaDataColumn>
+        <name>TYPE</name>
+        <type>STRING</type>
+        <mappingName>mirth_type</mappingName>
+      </metaDataColumn>
+    </metaDataColumns>
+    <attachmentProperties version="3.5.2">
+      <type>None</type>
+      <properties/>
+    </attachmentProperties>
+    <resourceIds class="linked-hash-map">
+      <entry>
+        <string>Default Resource</string>
+        <string>[Default Resource]</string>
+      </entry>
+    </resourceIds>
+  </properties>
+  <exportData>
+    <metadata>
+      <enabled>true</enabled>
+      <lastModified>
+        <time>1528816440999</time>
+        <timezone>America/New_York</timezone>
+      </lastModified>
+      <pruningSettings>
+        <archiveEnabled>true</archiveEnabled>
+      </pruningSettings>
+    </metadata>
+    <channelTags/>
+  </exportData>
+</channel>
