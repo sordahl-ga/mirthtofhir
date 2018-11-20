@@ -1,6 +1,6 @@
 # MirthTOFHIR Sample
 
-A simple Mirth Connect 3.5.2 Channel to convert HL7 ADT Messages (A08,A01,etc..) and convert it to a loadable
+A simple Mirth Connect 3.5.2 Channel to convert HL7 ADT  (A08,A01,etc..),ORU and ORM Messages and convert them to a loadable
 Bundle into FHIR.  Supporting Resources are stubbed in (e.g. Practioner, Location,etc...)
 
 ## Getting Started

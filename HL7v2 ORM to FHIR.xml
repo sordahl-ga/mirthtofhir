@@ -1,9 +1,9 @@
 <channel version="3.5.2">
-  <id>2ebe92d7-fc66-45ea-900a-e580ddf44f46</id>
-  <nextMetaDataId>2</nextMetaDataId>
-  <name>v2 ADT to FHIR</name>
+  <id>6e6e1290-2771-465a-b22a-fb6f7b0c4910</id>
+  <nextMetaDataId>3</nextMetaDataId>
+  <name>HL7v2 ORM to FHIR</name>
   <description></description>
-  <revision>84</revision>
+  <revision>29</revision>
   <sourceConnector version="3.5.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -51,7 +51,7 @@
         <queueBufferSize>1000</queueBufferSize>
       </sourceConnectorProperties>
       <scheme>FILE</scheme>
-      <host>/stor/hl7</host>
+      <host>//stor/orm</host>
       <fileFilter>*</fileFilter>
       <regex>false</regex>
       <directoryRecursion>false</directoryRecursion>
@@ -66,7 +66,7 @@
       <afterProcessingAction>DELETE</afterProcessingAction>
       <moveToDirectory></moveToDirectory>
       <moveToFileName></moveToFileName>
-      <errorReadingAction>NONE</errorReadingAction>
+      <errorReadingAction>DELETE</errorReadingAction>
       <errorResponseAction>AFTER_PROCESSING</errorResponseAction>
       <errorMoveToDirectory></errorMoveToDirectory>
       <errorMoveToFileName></errorMoveToFileName>
@@ -173,7 +173,7 @@
   <destinationConnectors>
     <connector version="3.5.2">
       <metaDataId>1</metaDataId>
-      <name>MSHLSFHIR Server</name>
+      <name>FHIR Server</name>
       <properties class="com.mirth.connect.connectors.http.HttpDispatcherProperties" version="3.5.2">
         <pluginProperties/>
         <destinationConnectorProperties version="3.5.2">
@@ -211,7 +211,7 @@
           <entry>
             <string>Authorization</string>
             <list>
-              <string>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjdfWnVmMXR2a3dMeFlhSFMzcTZsVWpVWUlHdyIsImtpZCI6IjdfWnVmMXR2a3dMeFlhSFMzcTZsVWpVWUlHdyJ9.eyJhdWQiOiJodHRwczovL21zaGxzZmhpcjNhcGlhcHAuYXp1cmV3ZWJzaXRlcy5uZXQiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNTMzMjE4MDI1LCJuYmYiOjE1MzMyMTgwMjUsImV4cCI6MTUzMzIyMTkyNSwiYWlvIjoiNDJCZ1lOZ1N1amJ1ZU11akg3OWFTNW5VT0hsakFBPT0iLCJhcHBpZCI6IjRmMTJkYmRjLTFkYjUtNDkyYy1hZDVlLWFhMTBlMDQ3NGQxNyIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJvaWQiOiJlMjU3NWQ4Mi0xNTdhLTRlYjEtOGExMC05M2Y5OTgyZjY3NjQiLCJzdWIiOiJlMjU3NWQ4Mi0xNTdhLTRlYjEtOGExMC05M2Y5OTgyZjY3NjQiLCJ0aWQiOiI3MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDciLCJ1dGkiOiI2R1U5dEpaRU4wcUxvNjRocnZNUUFBIiwidmVyIjoiMS4wIn0.Hsshxcd1IygfdQ9VNwvHGM44OeQ8CcVW5P7_D0qNbytYXqXXijGnXXQ34yK5sK2FU8HWo9fn1dsr630XM0WD2ptCTDhPqYb92wHeY5E_UHxaWLHl6orTaeEaHSSkAa3s83qS12SYM7eyTa_wQNnsFXKib7zY_U7M2Tz5vGykpgZJ2IMKygtmOzdNcXigtlJmaV-ZVFUOB57gfbUqzwXswDzzDvobsjL5P8pJz4enKG42EklcKJA2txiWoYmv2Z25eBI5bFCkX_U-yh9KEe7Sp1XmNVHiRNPhxqO4OtihXEZ1Q5sBdTiZm6o7sz0Y9vgceJYyhxmrZOKc9zGQdRy1rQ</string>
+              <string>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjdfWnVmMXR2a3dMeFlhSFMzcTZsVWpVWUlHdyIsImtpZCI6IjdfWnVmMXR2a3dMeFlhSFMzcTZsVWpVWUlHdyJ9.eyJhdWQiOiJodHRwczovL21zaGxzZmhpcjNhcGlhcHAuYXp1cmV3ZWJzaXRlcy5uZXQiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNTMzMTM3NTA5LCJuYmYiOjE1MzMxMzc1MDksImV4cCI6MTUzMzE0MTQwOSwiYWlvIjoiNDJCZ1lFaGV0Ymp0NDRybHM1OEdiT3F3Y3B0NkZnQT0iLCJhcHBpZCI6IjRmMTJkYmRjLTFkYjUtNDkyYy1hZDVlLWFhMTBlMDQ3NGQxNyIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJvaWQiOiJlMjU3NWQ4Mi0xNTdhLTRlYjEtOGExMC05M2Y5OTgyZjY3NjQiLCJzdWIiOiJlMjU3NWQ4Mi0xNTdhLTRlYjEtOGExMC05M2Y5OTgyZjY3NjQiLCJ0aWQiOiI3MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDciLCJ1dGkiOiJFTHBkXzhXT3owT2dDUUQ5QnVZQ0FBIiwidmVyIjoiMS4wIn0.gwS3hpPdShcmjo5QFMzKtORf7Ad6PkL7cVbfXGJ1IU327YPRzVjHbR-t4qz4SYg5h5cc9swceOv0GNMEVaft4GB2se1s2Nw2QZzw1n5bxrsBTLpgD6J5GfTWbutIcMR4_wWeNr1zK5PsZMSRS23acY3h6ybISzIiZpkkFG_FGPdAMYiWW8ykLlF-xxTE-Es7ziLgksvr-pK4tPo2FXYSWLMoFY-ehHyAltJilwa9251TWtxkKevcUF4OmImGFv2-DnlSFxuL1OjpmhOAtJzOs8IkFRDKu1V2448IrsnaFIY-bDPd3Kc_jcIZJDNov5n51rY-URdx5mblqffxpr6cVw</string>
             </list>
           </entry>
         </headers>
@@ -224,7 +224,7 @@
         <multipart>false</multipart>
         <useAuthentication>false</useAuthentication>
         <authenticationType>Basic</authenticationType>
-        <usePreemptiveAuthentication>true</usePreemptiveAuthentication>
+        <usePreemptiveAuthentication>false</usePreemptiveAuthentication>
         <username></username>
         <password></password>
         <content>${message.encodedData}</content>
@@ -236,348 +236,88 @@
       <transformer version="3.5.2">
         <elements>
           <com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
-            <name>HL7v2.x ADT to FHIR</name>
+            <name></name>
             <sequenceNumber>0</sequenceNumber>
             <script>//RHM
 var RHM=&quot;932&quot;;
 var instance = msg[&apos;MSH&apos;][&apos;MSH.3&apos;][&apos;MSH.3.1&apos;].toString();
 var source = msg[&apos;MSH&apos;][&apos;MSH.4&apos;][&apos;MSH.4.1&apos;].toString();
 
-if (instance==&quot;HQ&quot; &amp;&amp; source==&quot;C&quot;) RHM=&quot;204&quot;;
-else if (instance==&quot;HQ&quot; &amp;&amp; source==&quot;U&quot;) RHM=&quot;205&quot;;
+if (instance==&quot;HNAM&quot; &amp;&amp; source==&quot;CO&quot;) RHM=&quot;205&quot;;
+else if (instance==&quot;HNAM&quot; &amp;&amp; source==&quot;AA&quot;) RHM=&quot;204&quot;;
 
-
-//Reference Resources (Practition, Orginization, etc...)
-//GP
-var genPractitioner = null;
-if (msg[&apos;PD1&apos;][&apos;PD1.4&apos;].toString().length &gt; 0) {
-	genPractitioner = {};
-	genPractitioner.resourceType=&quot;Practitioner&quot;;
-	genPractitioner.active=true;
-	var gphumanName = {
-		family: [msg[&apos;PD1&apos;][&apos;PD1.4&apos;][&apos;PD1.4.2&apos;].toString()],
-		given: [msg[&apos;PD1&apos;][&apos;PD1.4&apos;][&apos;PD1.4.3&apos;].toString(),msg[&apos;PD1&apos;][&apos;PD1.4&apos;][&apos;PD1.4.4&apos;].toString()],
-		text: msg[&apos;PD1&apos;][&apos;PD1.4&apos;][&apos;PD1.4.3&apos;].toString() + &apos; &apos; + msg[&apos;PD1&apos;][&apos;PD1.4&apos;][&apos;PD1.4.2&apos;].toString()
-	};
-	genPractitioner.name = [gphumanName];
-	genPractitioner.id = RHM + &quot;-&quot; + msg[&apos;PD1&apos;][&apos;PD1.4&apos;][&apos;PD1.4.1&apos;].toString();
-}
-//Attending Doc
-var attPractitioner = null;
-if (msg[&apos;PV1&apos;][&apos;PV1.7&apos;].toString().length &gt; 0) {
-	attPractitioner = {};
-	attPractitioner.resourceType=&quot;Practitioner&quot;;
-	attPractitioner.active=true;
-	var atthumanName = {
-		family: [msg[&apos;PV1&apos;][&apos;PV1.7&apos;][&apos;PV1.7.2&apos;].toString()],
-		given: [msg[&apos;PV1&apos;][&apos;PV1.7&apos;][&apos;PV1.7.3&apos;].toString(),msg[&apos;PV1&apos;][&apos;PV1.7&apos;][&apos;PV1.7.4&apos;].toString()],
-		text: msg[&apos;PV1&apos;][&apos;PV1.7&apos;][&apos;PV1.7.3&apos;].toString() + &apos; &apos; + msg[&apos;PV1&apos;][&apos;PV1.7&apos;][&apos;PV1.7.2&apos;].toString()
-	};
-	attPractitioner.name = [atthumanName];
-	attPractitioner.id = RHM + &quot;-&quot; + msg[&apos;PV1&apos;][&apos;PV1.7&apos;][&apos;PV1.7.1&apos;].toString();
-}
-//Admitting Doc
-var admPractitioner = null;
-if (msg[&apos;PV1&apos;][&apos;PV1.17&apos;].toString().length &gt; 0) {
-	admPractitioner = {};
-	admPractitioner.resourceType=&quot;Practitioner&quot;;
-	admPractitioner.active=true;
-	var admhumanName = {
-		family: [msg[&apos;PV1&apos;][&apos;PV1.17&apos;][&apos;PV1.17.2&apos;].toString()],
-		given: [msg[&apos;PV1&apos;][&apos;PV1.17&apos;][&apos;PV1.17.3&apos;].toString(),msg[&apos;PV1&apos;][&apos;PV1.17&apos;][&apos;PV1.17.4&apos;].toString()],
-		text: msg[&apos;PV1&apos;][&apos;PV1.17&apos;][&apos;PV1.17.3&apos;].toString() + &apos; &apos; + msg[&apos;PV1&apos;][&apos;PV1.17&apos;][&apos;PV1.17.2&apos;].toString()
-	};
-	admPractitioner.name = [admhumanName];
-	admPractitioner.id = RHM + &quot;-&quot; + msg[&apos;PV1&apos;][&apos;PV1.17&apos;][&apos;PV1.17.1&apos;].toString();
-}
-// Reffering Doc
-var refPractitioner = null;
-if (msg[&apos;PV1&apos;][&apos;PV1.8&apos;].toString().length &gt; 0) {
-	refPractitioner = {};
-	refPractitioner.resourceType=&quot;Practitioner&quot;;
-	refPractitioner.active=true;
-	var refhumanName = {
-		family: [msg[&apos;PV1&apos;][&apos;PV1.8&apos;][&apos;PV1.8.2&apos;].toString()],
-		given: [msg[&apos;PV1&apos;][&apos;PV1.8&apos;][&apos;PV1.8.3&apos;].toString(),msg[&apos;PV1&apos;][&apos;PV1.8&apos;][&apos;PV1.8.4&apos;].toString()],
-		text: msg[&apos;PV1&apos;][&apos;PV1.8&apos;][&apos;PV1.8.3&apos;].toString() + &apos; &apos; + msg[&apos;PV1&apos;][&apos;PV1.8&apos;][&apos;PV1.8.2&apos;].toString()
-	};
-	refPractitioner.name = [refhumanName];
-	refPractitioner.id = RHM + &quot;-&quot; + msg[&apos;PV1&apos;][&apos;PV1.8&apos;][&apos;PV1.8.1&apos;].toString();
+//Get Subject
+var subject = &quot;Patient/&quot;;
+var patientenc = &quot;Encounter/&quot;;
+//Assuming first number is MR
+var patid = msg[&apos;PID&apos;][&apos;PID.3&apos;][0];
+subject = subject + RHM + &quot;-&quot; + patid[&apos;PID.3.1&apos;].toString();
+//TODO: Figure out ENCID Mapping
+patientenc = patientenc + RHM + &quot;-&quot; + msg[&apos;PID&apos;][&apos;PID.18&apos;][&apos;PID.18.1&apos;].toString();
+//Requestor Doc
+var reqPractitioner = null;
+if (msg[&apos;ORC&apos;][&apos;ORC.12&apos;][0].toString().length &gt; 0) {
+    reqPractitioner = {};
+    reqPractitioner.resourceType=&quot;Practitioner&quot;;
+    reqPractitioner.active=true;
+    var reqhumanName = {
+        family: [msg[&apos;ORC&apos;][&apos;ORC.12&apos;][0][&apos;ORC.12.2&apos;].toString()],
+        given: [msg[&apos;ORC&apos;][&apos;ORC.12&apos;][0][&apos;ORC.12.3&apos;].toString(),msg[&apos;ORC&apos;][&apos;ORC.12&apos;][0][&apos;ORC.12.4&apos;].toString()],
+        text: msg[&apos;ORC&apos;][&apos;ORC.12&apos;][0][&apos;ORC.12.3&apos;].toString() + &apos; &apos; + msg[&apos;ORC&apos;][&apos;ORC.12&apos;][0][&apos;ORC.12.2&apos;].toString()
+    };
+    reqPractitioner.name = [reqhumanName];
+    reqPractitioner.id = RHM + &quot;-&quot; + msg[&apos;ORC&apos;][&apos;ORC.12&apos;][0][&apos;ORC.12.1&apos;].toString();
 }
 
-//Patient Resource
-var Patient = {};
-var pinternalenc = null;
-var pinternal = null;
-var pempi = null;
-Patient.resourceType = &quot;Patient&quot;;
-Patient.active=true;
-//Gender
-Patient.gender = msg[&apos;PID&apos;][&apos;PID.8&apos;][&apos;PID.8.1&apos;].toString();
-if (Patient.gender===&quot;F&quot;) {
-	Patient.gender = &quot;female&quot;;
-} else if (Patient.gender===&quot;M&quot;) {
-	Patient.gender = &quot;male&quot;;
-} else if (Patient.gender===&quot;O&quot;) {
-	Patient.gender = &quot;other&quot;;
-} else {
-	Patient.gender = &quot;unknown&quot;;
+var procedurereq = {};
+procedurereq.resourceType = &quot;ProcedureRequest&quot;;
+procedurereq.identifier = [];
+var placer = {
+           &quot;type&quot;: {
+           &quot;coding&quot;: [
+             {
+               &quot;system&quot;: &quot;http://hl7.org/fhir/identifier-type/PLAC&quot;,
+               &quot;code&quot;: &quot;PLAC&quot;
+             }
+           ]
+         },
+         &quot;value&quot;: msg[&apos;ORC&apos;][&apos;ORC.2&apos;][&apos;ORC.2.1&apos;].toString(),
+         &quot;system&quot;:msg[&apos;ORC&apos;][&apos;ORC.2&apos;][&apos;ORC.2.2&apos;].toString()
+       }
+procedurereq.identifier.push(placer);
+if (msg[&apos;ORC&apos;][&apos;ORC.3&apos;][0].toString().length &gt; 0) {
+	var filler = {
+	           &quot;type&quot;: {
+	           &quot;coding&quot;: [
+	             {
+	               &quot;system&quot;: &quot;http://hl7.org/fhir/identifier-type/FILL&quot;,
+	               &quot;code&quot;: &quot;FILL&quot;
+	             }
+	           ]
+	         },
+	         &quot;value&quot;: msg[&apos;ORC&apos;][&apos;ORC.3&apos;][0][&apos;ORC.3.1&apos;].toString(),
+	         &quot;system&quot;:msg[&apos;ORC&apos;][&apos;ORC.3&apos;][0][&apos;ORC.3.2&apos;].toString()
+	       }
+	procedurereq.identifier.push(filler);
 }
-//Birthdate
-var date = msg[&apos;PID&apos;][&apos;PID.7&apos;][&apos;PID.7.1&apos;].toString();
-Patient.birthDate = date.substr(0,4) + &quot;-&quot; + date.substr(4,2) + &quot;-&quot; + date.substr(6,2);
-//Handle Repeting Field PID-3 for IDs
-Patient.identifier = [];
-for each(var id in msg[&apos;PID&apos;][&apos;PID.3&apos;]) {
-	var pi = {
-	     &quot;use&quot;: &quot;usual&quot;,
-	     &quot;type&quot;: {
-	       &quot;coding&quot;: [
-	         {
-	           &quot;system&quot;: &quot;http://hl7.org/fhir/v2/0203/&quot; + id[&apos;PID.3.5&apos;].toString(),
-	           &quot;code&quot;: id[&apos;PID.3.5&apos;].toString()
-	         }
-	       ]
-	     },
-	     &quot;value&quot;: id[&apos;PID.3.1&apos;].toString(),
-	     &quot;assigner&quot;:  id[&apos;PID.3.4&apos;].toString()
-	   }
-	   Patient.identifier.push(pi);
-	   if (id[&apos;PID.3.5&apos;].toString()===&quot;AI&quot;) pinternalenc = pi;
-	   if (id[&apos;PID.3.5&apos;].toString()===&quot;MR&quot;) pinternal = pi;
-	  
+procedurereq.status = msg[&apos;ORC&apos;][&apos;ORC.5&apos;][&apos;ORC.5.1&apos;].toString();
+procedurereq.subject = {&quot;reference&quot;:subject};
+procedurereq.context = {&quot;reference&quot;:patientenc};
+var timestamp = msg[&apos;ORC&apos;][&apos;ORC.9&apos;][&apos;ORC.9.1&apos;].toString();
+procedurereq.authoredOn = timestamp.substr(0,4) + &quot;-&quot; + timestamp.substr(4,2) + &quot;-&quot; + timestamp.substr(6,2) + &quot;T&quot; + timestamp.substring(8,10) +&quot;:&quot;+timestamp.substring(10,12) + &quot;:&quot; + timestamp.substring(12,14)+&quot;.000Z&quot;;
+if (reqPractitioner) {
+	procedurereq.requester = {};
+	procedurereq.requester.agent = {&quot;reference&quot; : &quot;Practitioner/&quot; + reqPractitioner.id, &quot;display&quot;: reqhumanName.text};
 }
-if (!pinternalenc) {
-	var pi = {
-	     &quot;use&quot;: &quot;usual&quot;,
-	     &quot;type&quot;: {
-	       &quot;coding&quot;: [
-	         {
-	           &quot;system&quot;: &quot;http://hl7.org/fhir/v2/0203/AI&quot;,
-	           &quot;code&quot;: &quot;AI&quot;
-	         }
-	       ]
-	     },
-	     &quot;value&quot;: msg[&apos;PID&apos;][&apos;PID.18&apos;][&apos;PID.18.1&apos;].toString(),
-	     &quot;assigner&quot;:  msg[&apos;PID&apos;][&apos;PID.18&apos;][&apos;PID.18.4&apos;].toString()
-	   }
-	   Patient.identifier.push(pi);
-	   pinternalenc = pi;
-}
-//SS#
-var ssi = {
-	     &quot;use&quot;: &quot;usual&quot;,
-	     &quot;type&quot;: {
-	       &quot;coding&quot;: [
-	         {
-	           &quot;system&quot;: &quot;http://hl7.org/fhir/v2/0203/SS&quot;,
-	           &quot;code&quot;: &quot;SS&quot;
-	         }
-	       ]
-	     },
-	     &quot;value&quot;: msg[&apos;PID&apos;][&apos;PID.19&apos;][&apos;PID.19.1&apos;].toString(),
-	     &quot;system&quot;: &quot;http://hl7.org/fhir/sid/us-ssn&quot;
-	   }
-	   Patient.identifier.push(ssi);
-//EXT ID
-var extid = {
-	     &quot;use&quot;: &quot;usual&quot;,
-	     &quot;type&quot;: {
-	       &quot;coding&quot;: [
-	         {
-	           &quot;system&quot;: &quot;http://hl7.org/fhir/v2/0203&quot;,
-	           &quot;code&quot;: &quot;EMPI&quot;
-	         }
-	       ]
-	     },
-	     &quot;value&quot;: msg[&apos;PID&apos;][&apos;PID.2&apos;][&apos;PID.2.1&apos;].toString(),
-	     &quot;assigner&quot;:  msg[&apos;PID&apos;][&apos;PID.2&apos;][&apos;PID.2.4&apos;].toString()
-	   }
-	   Patient.identifier.push(extid);	   
-//Name
-var humanName = {
-	family: [msg[&apos;PID&apos;][&apos;PID.5&apos;][&apos;PID.5.1&apos;].toString()],
-	given: [msg[&apos;PID&apos;][&apos;PID.5&apos;][&apos;PID.5.2&apos;].toString(),msg[&apos;PID&apos;][&apos;PID.5&apos;][&apos;PID.5.3&apos;].toString()],
-	text: msg[&apos;PID&apos;][&apos;PID.5&apos;][&apos;PID.5.2&apos;].toString() + &apos; &apos; + msg[&apos;PID&apos;][&apos;PID.5&apos;][&apos;PID.5.1&apos;].toString()
-};
-Patient.name = [humanName];
-//Address (Assume first sub-segment is home)
-var homeaddr = {};
-homeaddr.use = &quot;home&quot;;
-homeaddr.line = [];
-homeaddr.line.push(msg[&apos;PID&apos;][&apos;PID.11&apos;][&apos;PID.11.1&apos;].toString());
-homeaddr.line.push(msg[&apos;PID&apos;][&apos;PID.11&apos;][&apos;PID.11.2&apos;].toString());
-homeaddr.city = msg[&apos;PID&apos;][&apos;PID.11&apos;][&apos;PID.11.3&apos;].toString();
-homeaddr.state = msg[&apos;PID&apos;][&apos;PID.11&apos;][&apos;PID.11.4&apos;].toString();
-homeaddr.postalCode = msg[&apos;PID&apos;][&apos;PID.11&apos;][&apos;PID.11.5&apos;].toString();
-homeaddr.country = msg[&apos;PID&apos;][&apos;PID.11&apos;][&apos;PID.11.6&apos;].toString();
-Patient.address = [homeaddr];
-//Telecom (assume first sub-segment is home phone)
-var phone = {};
-phone.system=&quot;phone&quot;;
-phone.value=msg[&apos;PID&apos;][&apos;PID.13&apos;][&apos;PID.13.1&apos;].toString();
-phone.use=&quot;home&quot;;
-//Email
-var email = {};
-email.system=&quot;email&quot;;
-email.value=msg[&apos;PID&apos;][&apos;PID.13&apos;][&apos;PID.13.4&apos;].toString();
-Patient.telecom = [phone,email];
-//Marital Status (You would normally do a code look up here)
-var marital = {};
-var maritalCoding = {};
-maritalCoding.system=&quot;http://hl7.org/fhir/ValueSet/marital-status&quot;;
-maritalCoding.code = msg[&apos;PID&apos;][&apos;PID.16&apos;][&apos;PID.16.1&apos;].toString()
-if (maritalCoding.code===&quot;S&quot;) {
-	maritalCoding.display=&quot;Never Married&quot;;
-	marital.text=&quot;Single&quot;;
-} else if (maritalCoding.code===&quot;M&quot;) {
-	maritalCoding.display=&quot;Married&quot;;
-	marital.text=&quot;Married&quot;;
-}
-marital.coding = [maritalCoding];
-Patient.maritalStatus= marital;
-//RACE
-//TODO: MAP TO US-CORE-RACE Source System Custom Codes
-Patient.extension = [];
-var race = {
-            &quot;url&quot;: &quot;http://hl7.org/fhir/StructureDefinition/us-core-race&quot;,
-            &quot;valueCodeableConcept&quot;: {
-                &quot;text&quot;: &quot;&quot;,
-                &quot;coding&quot;: [
-                    {
-                        &quot;system&quot;: &quot;&quot;,
-                        &quot;code&quot;: msg[&apos;PID&apos;][&apos;PID.10&apos;][&apos;PID.10.1&apos;].toString(),
-                        &quot;display&quot;: &quot;&quot;
-                    }
-                ]
-            }
-        }
-Patient.extension.push(race);
-//GP Reference
-if (genPractitioner) Patient.generalPractitioner = &quot;Practitioner/&quot; + genPractitioner.id;
-Patient.id = RHM + &quot;-&quot; + pinternal.value;
-//Location
-var location = null;
-if (msg[&apos;PV1&apos;][&apos;PV1.3&apos;].toString().length &gt; 0) {
-	var lpv1 = msg[&apos;PV1&apos;][&apos;PV1.3&apos;];
-	var unit = lpv1[&apos;PV1.3.1&apos;].toString();
-	var room = lpv1[&apos;PV1.3.2&apos;].toString();
-	var bed = lpv1[&apos;PV1.3.3&apos;].toString();
-	var fac = lpv1[&apos;PV1.3.4&apos;].toString();
-	var ls = unit;
-	if (room != null &amp;&amp; room.length &gt; 0) ls = ls + &quot;-&quot; + room;
-	if (bed !=null &amp;&amp; bed.length &gt; 0) ls =ls + &quot;-&quot; + bed;
-	if (fac != null &amp;&amp; fac.length &gt; 0) ls =ls + &quot;-&quot; + fac;
-	location = {};
-	location.resourceType=&quot;Location&quot;;
-	location.id = RHM + &quot;-&quot; + ls;
-	location.identifier=[{&quot;value&quot;:RHM + &quot;-&quot; + ls}];
-}
-//Encounter
-var encounter = {&quot;class&quot;:{&quot;code&quot;: msg[&apos;PV1&apos;][&apos;PV1.20&apos;][&apos;PV1.20.1&apos;].toString()}};
-encounter.resourceType=&quot;Encounter&quot;;
-encounter.id = RHM + &quot;-&quot; + pinternalenc.value;
-encounter.subject={&quot;reference&quot;:&quot;Patient/&quot; + Patient.id};
-if (location)
-	encounter.location = [{&quot;location&quot;: {&quot;reference&quot;:&quot;Location/&quot; + location.id}}];
-//Admission and Discharge Date/Time
-encounter.period = {};
-var admdate = msg[&apos;PV2&apos;][&apos;PV2.8&apos;][&apos;PV2.8.1&apos;].toString();
-encounter.period.start = admdate.substr(0,4) + &quot;-&quot; + admdate.substr(4,2) + &quot;-&quot; + admdate.substr(6,2) + &quot;T&quot; + admdate.substring(8,10) +&quot;:&quot;+admdate.substring(10,12)+&quot;:00.000Z&quot;;
-var disch = msg[&apos;PV1&apos;][&apos;PV1.46&apos;][&apos;PV1.46.1&apos;].toString();
-if (disch !=null &amp;&amp; disch.length &gt; 11) {
-	encounter.period.end = disch.substr(0,4) + &quot;-&quot; + disch.substr(4,2) + &quot;-&quot; + disch.substr(6,2) + &quot;T&quot; + disch.substring(8,10) +&quot;:&quot;+disch.substring(10,12)+&quot;:00.000Z&quot;;	
-}
-//Encounter Types Patient Type and Adm Type
-encounter.type = [];
-var enctext = {};
-enctext.text = msg[&apos;PV1&apos;][&apos;PV1.18&apos;][&apos;PV1.18.1&apos;].toString();
-encounter.type.push(enctext);
-var enctext1 = {};
-enctext1.text = msg[&apos;PV1&apos;][&apos;PV1.4&apos;][&apos;PV1.4.1&apos;].toString();
-encounter.type.push(enctext1);
-encounter.hospitalization = {};
-encounter.hospitalization.dischargeDisposition = {};
-encounter.hospitalization.dischargeDisposition.text=msg[&apos;PV1&apos;][&apos;PV1.36&apos;][&apos;PV1.36.1&apos;].toString();
-encounter.participant = [];
-if (admPractitioner) {
-	var part =  {
-	      &quot;type&quot;: [
-	        {
-	          &quot;coding&quot;: [
-	            {
-	              &quot;system&quot;: &quot;http://hl7.org/fhir/v3/ParticipationType&quot;,
-	              &quot;code&quot;: &quot;ADM&quot;,
-	              &quot;display&quot;: &quot;admitter&quot;
-	            }
-	          ],
-	          &quot;text&quot;: &quot;Admitting Physician&quot;
-	        }
-	      ],
-	      &quot;period&quot;: {
-	        &quot;start&quot;: encounter.period.start
-	      },
-	      &quot;individual&quot;: {
-	        &quot;reference&quot;: &quot;Practitioner/&quot; + admPractitioner.id,
-	        &quot;display&quot;: admhumanName.text
-	      }
-	};
-	encounter.participant.push(part);
-}
-if (attPractitioner) {
-	var part =  {
-	      &quot;type&quot;: [
-	        {
-	          &quot;coding&quot;: [
-	            {
-	              &quot;system&quot;: &quot;http://hl7.org/fhir/v3/ParticipationType&quot;,
-	              &quot;code&quot;: &quot;ATND&quot;,
-	              &quot;display&quot;: &quot;attender&quot;
-	            }
-	          ],
-	          &quot;text&quot;: &quot;Attending Physician&quot;
-	        }
-	      ],
-	      &quot;period&quot;: {
-	        &quot;start&quot;: encounter.period.start
-	      },
-	      &quot;individual&quot;: {
-	        &quot;reference&quot;: &quot;Practitioner/&quot; + attPractitioner.id,
-	        &quot;display&quot;: atthumanName.text
-	      }
-	};
-	encounter.participant.push(part);
-}
-if (refPractitioner) {
-	var part =  {
-	      &quot;type&quot;: [
-	        {
-	          &quot;coding&quot;: [
-	            {
-	              &quot;system&quot;: &quot;http://hl7.org/fhir/v3/ParticipationType&quot;,
-	              &quot;code&quot;: &quot;REF&quot;,
-	              &quot;display&quot;: &quot;referrer&quot;
-	            }
-	          ],
-	          &quot;text&quot;: &quot;Reffering Physician&quot;
-	        }
-	      ],
-	      &quot;period&quot;: {
-	        &quot;start&quot;: encounter.period.start
-	      },
-	      &quot;individual&quot;: {
-	        &quot;reference&quot;: &quot;Practitioner/&quot; + refPractitioner.id,
-	        &quot;display&quot;: refhumanName.text
-	      }
-	};
-	encounter.participant.push(part);
-}
-      
+procedurereq.reasonCode = [];
+procedurereq.reasonCode.push({&quot;text&quot;:msg[&apos;ORC&apos;][&apos;ORC.16&apos;][&apos;ORC.16.1&apos;].toString()});
+procedurereq.code = {&quot;text&quot;: msg[&apos;OBR&apos;][&apos;OBR.24&apos;][&apos;OBR.24.1&apos;].toString()};
+ 
 var messageHeader = {};
 
 messageHeader.resourceType = &quot;MessageHeader&quot;;
 messageHeader.source = {
-	name: RHM
+	name: msg[&apos;MSH&apos;][&apos;MSH.3&apos;][&apos;MSH.3.1&apos;].toString()
 }
 messageHeader.destination = [{
 	name: &apos;Azure FHIR&apos;
@@ -585,26 +325,17 @@ messageHeader.destination = [{
 var timestamp = msg[&apos;MSH&apos;][&apos;MSH.7&apos;][&apos;MSH.7.1&apos;].toString();
 messageHeader.timestamp = timestamp.substr(0,4) + &quot;-&quot; + timestamp.substr(4,2) + &quot;-&quot; + timestamp.substr(6,2) + &quot;T&quot; + timestamp.substring(8,10) +&quot;:&quot;+timestamp.substring(10,12) + &quot;:&quot; + timestamp.substring(12,14)+&quot;.000Z&quot;;
 messageHeader.event = {&quot;code&quot; : msg[&apos;MSH&apos;][&apos;MSH.9&apos;][&apos;MSH.9.2&apos;].toString()};
-messageHeader.reason = {};
-messageHeader.reason.coding = [];
-messageHeader.reason.coding.push({&quot;code&quot; : msg[&apos;EVN&apos;][&apos;EVN.4&apos;][&apos;EVN.4.1&apos;].toString()});
 messageHeader.focus = [];
-messageHeader.focus.push({&quot;reference&quot;:&quot;Patient/&quot; + Patient.id});
-messageHeader.focus.push({&quot;reference&quot;:&quot;Encounter/&quot; + encounter.id});
+messageHeader.focus.push({&quot;reference&quot;:subject});
+//messageHeader.data = [Patient];
 var bundle = {};
 bundle.resourceType = &quot;Bundle&quot;;
 bundle.type = &quot;message&quot;;
 bundle.entry = [];
 bundle.entry.push({&quot;resource&quot; : messageHeader});
-if (genPractitioner) bundle.entry.push({&quot;resource&quot; : genPractitioner});
-if (admPractitioner) bundle.entry.push({&quot;resource&quot; : admPractitioner});
-if (attPractitioner) bundle.entry.push({&quot;resource&quot; : attPractitioner});
-if (refPractitioner) bundle.entry.push({&quot;resource&quot; : refPractitioner});
-if (location) bundle.entry.push({&quot;resource&quot; : location});
-bundle.entry.push({&quot;resource&quot; : Patient});
-bundle.entry.push({&quot;resource&quot; : encounter});
+if (reqPractitioner) bundle.entry.push({&quot;resource&quot; : reqPractitioner});
+bundle.entry.push({&quot;resource&quot; : procedurereq});
 bundle.total = bundle.entry.length;
-
 msg = JSON.stringify(bundle);</script>
           </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
         </elements>
@@ -699,7 +430,7 @@ return;</undeployScript>
     <clearGlobalChannelMap>true</clearGlobalChannelMap>
     <messageStorageMode>DEVELOPMENT</messageStorageMode>
     <encryptData>false</encryptData>
-    <removeContentOnCompletion>false</removeContentOnCompletion>
+    <removeContentOnCompletion>true</removeContentOnCompletion>
     <removeOnlyFilteredOnCompletion>false</removeOnlyFilteredOnCompletion>
     <removeAttachmentsOnCompletion>false</removeAttachmentsOnCompletion>
     <initialState>STARTED</initialState>
@@ -731,7 +462,7 @@ return;</undeployScript>
     <metadata>
       <enabled>true</enabled>
       <lastModified>
-        <time>1533576645982</time>
+        <time>1533139650086</time>
         <timezone>America/New_York</timezone>
       </lastModified>
       <pruningSettings>
